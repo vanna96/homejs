@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Khmer:wght@300&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --foreground-rgb: 0, 0, 0;
+    --background-start-rgb: 214, 219, 220;
+    --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --foreground-rgb: 255, 255, 255;
+        --background-start-rgb: 0, 0, 0;
+        --background-end-rgb: 0, 0, 0;
+    }
+}
+
+body {
+    background: #8080801c;
+    font-family: 'Noto Serif Khmer', serif;
+}
+
+input::-webkit-input-placeholder {
+    font-family: 'Noto Serif Khmer', serif;
+}
+
+
+.zoomIn {
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+}
+
+.zoomIn:hover {
+    -webkit-transform: scale(1.15);
+    transform: scale(1.15);
+    z-index: 49;
+    position: relative;
+}
+
+.ant-drawer-left .ant-drawer-content-wrapper,
+.ant-drawer-left .ant-drawer-mask {
+    height: 100vh !important;
+}
+
+.float-button {
+    cursor: pointer;
+    position: fixed;
+    bottom: 13vh;
+    background: white;
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+}
+
+.containerStyle {
+    background: white;
+    position: relative;
+    height: '100%';
+    overflow: hidden;
+    /* text-align: center; */
+}
+
+/* .float-button{
+    position: fixed;
+    bottom: 10vh;
+}
+
+.float-button :where(.css-dev-only-do-not-override-1fviqcj).ant-float-btn-group{
+    position: relative;
+} */
+
+
+.stickyIcon {
+    cursor: pointer;
+    position: fixed;
+    top: 2vh;
+    background: white;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+    box-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+}
+
+.ant-checkbox-checked .ant-checkbox-inner, .ant-radio-checked .ant-radio-inner {
+    background-color: #db2877 !important;
+    border-color: #db2877 !important;
+
+}
+
+.ant-checkbox-wrapper:hover .ant-checkbox-inner,
+.ant-checkbox:hover .ant-checkbox-inner,
+.ant-checkbox-input:focus+.ant-checkbox-inner, .ant-radio-wrapper:hover .ant-radio-inner,
+.ant-radio:hover .ant-radio-inner,
+.ant-radio-input:focus+.ant-radio-inner {
+    border-color: #db2877 !important;
+}
+
+.ant-checkbox-indeterminate .ant-checkbox-inner::after, .ant-radio-indeterminate .ant-radio-inner::after {
+    background-color: #db2877 !important;
+}
+
+.ant-checkbox-checked::after, .ant-radio-checked::after {
+    border: none !important;
+}
+
+.ant-checkbox-inner,
+.ant-checkbox-input, .ant-radio-inner,
+.ant-radio-input {
+    transform: scale(1.1)
+}
+
+.ohlala {
+    height: calc(100vh - 65px);
+    overflow-y: scroll;
+}
