@@ -1,21 +1,12 @@
 "use client";
 
-import { GridItem } from "@/components/UI/GridItem";
 import { ListItem } from "@/components/UI/ListItem";
-import {
-  AppstoreOutlined,
-  BarsOutlined,
-  LeftOutlined,
-} from "@ant-design/icons";
-import { Affix, Segmented } from "antd";
+import { HeartFilled, LeftOutlined, StarFilled } from "@ant-design/icons";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
 
-export default function bestSelling() {
+export default function Favorite() {
   const router = useRouter();
-  const [listType, setListType] = useState("Grid");
-
-  const items = [
+  const favorites = [
     {
       id: 1,
       name: "Pizza pie",
@@ -58,8 +49,8 @@ export default function bestSelling() {
   ];
 
   return (
-    <div className="max-w-md mx-auto containerStyle min-h-[100vh]">
-      <title>Best Selling</title>
+    <div className="max-w-md mx-auto bg-gray-100 min-h-[100vh]">
+      <title>Favorite</title>
       <div className="flex items-center justify-between bg-pink-600 h-[50px] text-white px-2">
         <LeftOutlined
           className="cursor-pointer font-semibold text-white"
@@ -69,42 +60,48 @@ export default function bestSelling() {
           className="text-white font-light text-xl"
           style={{ fontFamily: "__Roboto_Mono_65f3ca" }}
         >
-          Best Selling
+          Favorite
         </div>
         <div>{""}</div>
       </div>
-      <div className="mx-4">
-        <Affix offsetTop={0}>
-          <div className="flex items-center justify-between mb-7 bg-white">
-            <h3
-              className="font-bold"
-              style={{ fontFamily: "__Roboto_Mono_65f3ca" }}
-            >
-              Lists
-            </h3>
-            <Segmented
-              size="large"
-              value={listType}
-              onChange={(value: any) => setListType(value)}
-              options={[
-                {
-                  value: "List",
-                  icon: <BarsOutlined />,
-                },
-                {
-                  value: "Grid",
-                  icon: <AppstoreOutlined />,
-                },
-              ]}
-            />
-          </div>
-        </Affix>
-        {listType === "Grid" ? (
-          <GridItem items={items} />
-        ) : (
-          <ListItem items={items} />
-        )}
+      <div className="mx-4 mt-6">
+        {favorites?.map((favorite, index: number) => (
+          <Item key={index} favorite={favorite} />
+        ))}
       </div>
     </div>
   );
 }
+
+const Item = ({ favorite }: any) => {
+  return (
+    <div className="grid grid-cols-1 bg-white h-[100px] rounded-md mb-4 p-3">
+      <div className="grid grid-cols-6">
+        <div
+          className="col-span-2"
+          style={{
+            backgroundImage: `url(${favorite?.imgUrl})`,
+            height: "100%",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+            marginBottom: "30px",
+            borderRadius: "10%",
+          }}
+        ></div>
+        <div className="col-span-3 ml-3">
+          <div className="truncate font-semibold">{favorite?.name}</div>
+          <div className="truncate flex items-center mt-2 space-x-1">
+            <StarFilled />
+            <div>{favorite?.rate || "0.0"}</div>
+          </div>
+          <div className="truncate flex items-center mt-2 space-x-1">
+            <div>{favorite?.price || "0.00"}</div>
+          </div>
+        </div>
+        <div className="col-span-1 text-center justify-center items-center flex">
+          <HeartFilled style={{ fontSize: "26px" }} />
+        </div>
+      </div>
+    </div>
+  );
+};

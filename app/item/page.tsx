@@ -7,19 +7,13 @@ import {
   BarsOutlined,
   LeftOutlined,
 } from "@ant-design/icons";
-import { Affix, Segmented } from "antd";
+import { Affix, Segmented, Tag } from "antd";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-export default function ItemDetail() {
+export default function newComming() {
   const router = useRouter();
   const [listType, setListType] = useState("Grid");
-  const category = {
-    id: 1,
-    name: "Drink & Dessert",
-    imageUrl:
-      "https://s3-ap-southeast-1.amazonaws.com/foodcourt-production-bucket/upload/category/1681699808.jpg",
-  };
 
   const items = [
     {
@@ -63,9 +57,36 @@ export default function ItemDetail() {
     },
   ];
 
+  const categories = [
+    {
+      id: 1,
+      name: "Drink & Dessert",
+      imageUrl:
+        "https://s3-ap-southeast-1.amazonaws.com/foodcourt-production-bucket/upload/category/1681699808.jpg",
+    },
+    {
+      id: 2,
+      name: "Coffee",
+      imageUrl:
+        "https://www.tastingtable.com/img/gallery/coffee-brands-ranked-from-worst-to-best/l-intro-1645231221.jpg",
+    },
+    {
+      id: 3,
+      name: "Khmer Food",
+      imageUrl:
+        "https://www.siemreap.net/wp-content/uploads/2018/08/Best-Khmer-Restaurants-in-Siem-Reap-Malis-Siemreapnet.jpg",
+    },
+    {
+      id: 4,
+      name: "Roasteserie Chicken & Chinese Food",
+      imageUrl:
+        "https://s3-ap-southeast-1.amazonaws.com/foodcourt-production-bucket/upload/category/1679974320.jpg",
+    },
+  ];
+
   return (
     <div className="max-w-md mx-auto containerStyle min-h-[100vh]">
-      <title>Category Detail</title>
+      <title>Items</title>
       <div className="flex items-center justify-between bg-pink-600 h-[50px] text-white px-2">
         <LeftOutlined
           className="cursor-pointer font-semibold text-white"
@@ -75,46 +96,53 @@ export default function ItemDetail() {
           className="text-white font-light text-xl"
           style={{ fontFamily: "__Roboto_Mono_65f3ca" }}
         >
-          Category Detail
+          Items
         </div>
         <div>{""}</div>
       </div>
+      <h3
+        className="font-bold mx-4"
+        style={{ fontFamily: "__Roboto_Mono_65f3ca" }}
+      >
+        Categories
+      </h3>
       <div
-        style={{
-          backgroundImage: `url(${category?.imageUrl})`,
-          width: "100%",
-          height: "200px",
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "cover",
-          marginBottom: "30px",
-        }}
-      />
-      <div className="mx-4">
-        <Affix offsetTop={0}>
-          <div className="flex items-center justify-between mb-7 bg-white">
-            <h3
-              className="font-bold"
-              style={{ fontFamily: "__Roboto_Mono_65f3ca" }}
-            >
-              {category?.name}
-            </h3>
-            <Segmented
-              size="large"
-              value={listType}
-              onChange={(value: any) => setListType(value)}
-              options={[
-                {
-                  value: "List",
-                  icon: <BarsOutlined />,
-                },
-                {
-                  value: "Grid",
-                  icon: <AppstoreOutlined />,
-                },
-              ]}
-            />
+        className="overflow-x-scroll w-full max-w-md mb-6"
+        style={{ display: "-webkit-inline-box" }}
+      >
+        {categories?.map((category: any, index: number) => (
+          <div
+            key={index}
+            className="h-7 pt-[6px] rounded-full px-[10px] bg-gray-200 mx-2"
+          >
+            {category?.name}
           </div>
-        </Affix>
+        ))}
+      </div>
+      <div className="mx-4">
+        <div className="flex items-center justify-between mb-7 bg-white">
+          <h3
+            className="font-bold"
+            style={{ fontFamily: "__Roboto_Mono_65f3ca" }}
+          >
+            Lists
+          </h3>
+          <Segmented
+            size="large"
+            value={listType}
+            onChange={(value: any) => setListType(value)}
+            options={[
+              {
+                value: "List",
+                icon: <BarsOutlined />,
+              },
+              {
+                value: "Grid",
+                icon: <AppstoreOutlined />,
+              },
+            ]}
+          />
+        </div>
         {listType === "Grid" ? (
           <GridItem items={items} />
         ) : (
