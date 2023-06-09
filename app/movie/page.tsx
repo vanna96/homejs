@@ -8,7 +8,8 @@ import {
   RightCircleOutlined,
   VideoCameraOutlined,
 } from "@ant-design/icons";
-import { Carousel, Divider, Dropdown, Input, MenuProps } from "antd";
+import { Button, Carousel, Divider, Dropdown, Input, MenuProps } from "antd";
+import Link from "next/link";
 
 const { Search } = Input;
 
@@ -186,37 +187,52 @@ export default function Movie() {
                     boxShadow: "0 0.125rem 0.25rem rgba(0, 0, 0, .075)",
                   }}
                 >
-                  <div className="absolute bg-gray-500 text-white right-0 rounded-sm p-[2px]">
-                    Ep 12
-                  </div>
-                  <div className="absolute bg-red-500 text-white rounded-sm p-[2px]">
-                    រឿងចិន
-                  </div>
-                  <div className="overlay">
-                    <PlayCircleFilled
+                  <Link
+                    href={`/movie/${movie?.id}`}
+                    style={{ textDecoration: "none", color: "black" }}
+                  >
+                    <div className="absolute bg-gray-500 text-white right-0 rounded-sm p-[2px]">
+                      Ep 12
+                    </div>
+                    <div className="absolute bg-red-500 text-white rounded-sm p-[2px]">
+                      រឿងចិន
+                    </div>
+                    <div className="overlay">
+                      <PlayCircleFilled
+                        style={{
+                          color: "white",
+                          fontSize: "40px",
+                          position: "absolute",
+                          top: "40%",
+                          left: "40%",
+                        }}
+                      />
+                    </div>
+                    <img
+                      src={movie?.imgUrl}
+                      alt={movie?.title}
                       style={{
-                        color: "white",
-                        fontSize: "40px",
-                        position: "absolute",
-                        top: "40%",
-                        left: "40%",
+                        width: "100%",
+                        height: "200px",
+                        objectFit: "cover",
                       }}
                     />
-                  </div>
-                  <img
-                    src={movie?.imgUrl}
-                    alt={movie?.title}
-                    style={{
-                      width: "100%",
-                      height: "200px",
-                      objectFit: "cover",
-                    }}
-                  />
-                  <div className="font-semibold text-[16px] mt-1 ml-2">
-                    {movie?.title}
-                  </div>
+                    <div className="font-semibold text-[16px] mt-1 ml-2">
+                      {movie?.title}
+                    </div>
+                  </Link>
                 </div>
               ))}
+            </div>
+            <div className="text-center">
+              <Button
+                // loading={loading}
+                // onClick={enterLoading}
+                className="top-1"
+              >
+                {" "}
+                Load More{" "}
+              </Button>
             </div>
           </div>
           <div className="col-span-3">
