@@ -6,6 +6,7 @@ import { bannerApi } from "./services/bannerApi";
 import { incomingApi } from "./services/incomingApi";
 import { bestSellingApi } from "./services/bestSellingApi";
 import { itemApi } from "./services/itemApi";
+import { infiniteScrollAPI } from "./services/infiniteScrollAPI";
 
 export const store = configureStore({
   reducer: {
@@ -16,6 +17,7 @@ export const store = configureStore({
     [incomingApi.reducerPath]: incomingApi.reducer,
     [bestSellingApi.reducerPath]: bestSellingApi.reducer,
     [itemApi.reducerPath]: itemApi.reducer,
+    [infiniteScrollAPI.reducerPath]: infiniteScrollAPI.reducer,
   },
   devTools: process.env.NODE_ENV !== "production",
   middleware: (getDefaultMiddleware) =>
@@ -26,6 +28,7 @@ export const store = configureStore({
       incomingApi.middleware,
       bestSellingApi.middleware,
       itemApi.middleware,
+      infiniteScrollAPI.middleware,
     ]),
 });
 
