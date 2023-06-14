@@ -1,6 +1,6 @@
 "use client";
 
-import lottieJson from "@/public/animations/lf20_szlepvdh.json";
+import lottieJson from "@/public/animations/10749-mushroom-jumping.json";
 import React from "react";
 import Lottie from "react-lottie-player";
 
