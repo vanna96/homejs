@@ -3,7 +3,7 @@ import { GridItem } from "@/components/UI/GridItem";
 import { Header } from "@/components/UI/search/Header";
 import { DownOutlined, FilterFilled, LeftOutlined } from "@ant-design/icons";
 import { Button, Dropdown, MenuProps, Space, Tag } from "antd";
-import type { MenuProps } from "antd";
+// import type { MenuProps } from "antd";
 
 export default function Search() {
   const categories: any = [
